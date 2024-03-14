@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: error
+
+spring:
+  application:
+    name: graphql
+
+  main:
+    banner-mode: off
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pdp
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql # default
+
