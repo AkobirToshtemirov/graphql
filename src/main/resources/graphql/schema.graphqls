@@ -24,20 +24,20 @@ type Mutation {
 }
 
 type User {
-    id: ID!
-    fullName: String!
-    email: String!
+    id: ID
+    fullName: String
+    email: String
     todos: [Todo]
 }
 
 type Todo {
-    id: ID!
-    title: String!
-    description: String!
-    category: Category!
-    level: Level!
-    deadline: String!
-    completed: Boolean!
+    id: ID
+    title: String
+    description: String
+    category: Category
+    level: Level
+    deadline: String
+    completed: Boolean
 }
 
 input UserInput {
