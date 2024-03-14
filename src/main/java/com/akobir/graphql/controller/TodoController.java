@@ -25,15 +25,13 @@ public class TodoController {
     }
 
     @MutationMapping
-    public ResponseEntity<Todo> createTodo(@Argument("todo") @Valid TodoDTO todoInputDTO) {
-        Todo createdTodo = todoService.createTodo(todoInputDTO);
-        return ResponseEntity.ok(createdTodo);
+    public Todo createTodo(@Argument("todo") @Valid TodoDTO todoInputDTO) {
+        return todoService.createTodo(todoInputDTO);
     }
 
     @MutationMapping
-    public ResponseEntity<Todo> completeTodo(@Argument("todoId") Long todoId) {
-        Todo completedTodo = todoService.completeTodo(todoId);
-        return ResponseEntity.ok(completedTodo);
+    public Todo completeTodo(@Argument("todoId") Long todoId) {
+        return todoService.completeTodo(todoId);
     }
 
     @MutationMapping
@@ -43,35 +41,30 @@ public class TodoController {
     }
 
     @MutationMapping
-    public ResponseEntity<Todo> updateTodo(
+    public Todo updateTodo(
             @Argument("todoId") Long todoId,
             @Argument("todo") @Valid TodoDTO todoInputDTO
     ) {
-        Todo updatedTodo = todoService.updateTodo(todoId, todoInputDTO);
-        return ResponseEntity.ok(updatedTodo);
+        return todoService.updateTodo(todoId, todoInputDTO);
     }
 
     @QueryMapping
-    public ResponseEntity<List<Todo>> getTodosByLevel(@Argument("level") String level) {
-        List<Todo> todos = todoService.getTodosByLevel(level);
-        return ResponseEntity.ok(todos);
+    public List<Todo> getTodosByLevel(@Argument("level") String level) {
+        return todoService.getTodosByLevel(level);
     }
 
     @QueryMapping
-    public ResponseEntity<List<Todo>> getTodosByCategory(@Argument("category") String category) {
-        List<Todo> todos = todoService.getTodosByCategory(category);
-        return ResponseEntity.ok(todos);
+    public List<Todo> getTodosByCategory(@Argument("category") String category) {
+        return todoService.getTodosByCategory(category);
     }
 
     @QueryMapping
-    public ResponseEntity<List<Todo>> getTodosByDeadline(@Argument("deadline") LocalDate deadline) {
-        List<Todo> todos = todoService.getTodosByDeadline(deadline);
-        return ResponseEntity.ok(todos);
+    public List<Todo> getTodosByDeadline(@Argument("deadline") LocalDate deadline) {
+        return todoService.getTodosByDeadline(deadline);
     }
 
     @QueryMapping
-    public ResponseEntity<List<Todo>> getTodosByUserId(@Argument("userId") Long userId) {
-        List<Todo> todos = todoService.getTodosByUserId(userId);
-        return ResponseEntity.ok(todos);
+    public List<Todo> getTodosByUserId(@Argument("userId") Long userId) {
+        return todoService.getTodosByUserId(userId);
     }
 }

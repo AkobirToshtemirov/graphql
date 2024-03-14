@@ -7,8 +7,6 @@ import jakarta.validation.Valid;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,20 +23,17 @@ public class UserController {
     }
 
     @MutationMapping
-    public ResponseEntity<User> createUser(@Argument("user") @Valid UserDTO userInputDTO) {
-        User createdUser = userService.createUser(userInputDTO);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    public User createUser(@Argument("user") @Valid UserDTO user) {
+        return userService.createUser(user);
     }
 
     @QueryMapping
-    public ResponseEntity<User> getUser(@Argument("id") Long id) {
-        User user = userService.getUser(id);
-        return ResponseEntity.ok(user);
+    public User getUser(@Argument("id") Long id) {
+        return userService.getUser(id);
     }
 
     @QueryMapping
-    public ResponseEntity<List<User>> getUsers() {
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+    public List<User> getUsers() {
+        return userService.getAllUsers();
     }
 }
