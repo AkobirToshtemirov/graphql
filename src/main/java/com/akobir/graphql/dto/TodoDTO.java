@@ -1,17 +1,29 @@
 package com.akobir.graphql.dto;
 
-import com.akobir.graphql.entity.enums.Category;
-import com.akobir.graphql.entity.enums.Level;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
 public record TodoDTO(
         Long userId,
+
+        @NotBlank
         String title,
+
+        @NotBlank
         String description,
-        Category category,
-        Level level,
+
+        @NotBlank
+        String category,
+
+        @NotBlank
+        String level,
+
+        @NotBlank
         LocalDate deadline,
+
+        @NotNull
         boolean completed
 ) {
 }

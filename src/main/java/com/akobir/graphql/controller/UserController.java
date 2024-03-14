@@ -3,6 +3,7 @@ package com.akobir.graphql.controller;
 import com.akobir.graphql.dto.UserDTO;
 import com.akobir.graphql.entity.User;
 import com.akobir.graphql.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @MutationMapping
-    public ResponseEntity<User> createUser(@Argument("user") UserDTO userInputDTO) {
+    public ResponseEntity<User> createUser(@Argument("user") @Valid UserDTO userInputDTO) {
         User createdUser = userService.createUser(userInputDTO);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }

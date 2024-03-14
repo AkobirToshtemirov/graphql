@@ -34,8 +34,8 @@ public class TodoServiceImpl implements TodoService {
 
         todo.setTitle(todoDTO.title());
         todo.setDescription(todoDTO.description());
-        todo.setCategory(todoDTO.category());
-        todo.setLevel(todoDTO.level());
+        todo.setCategory(Enum.valueOf(Category.class, todoDTO.category()));
+        todo.setLevel(Enum.valueOf(Level.class, todoDTO.level()));
         todo.setDeadline(todoDTO.deadline());
 
         User user = userRepository.findById(todoDTO.userId())
@@ -72,8 +72,8 @@ public class TodoServiceImpl implements TodoService {
 
         todo.setTitle(todoDTO.title());
         todo.setDescription(todoDTO.description());
-        todo.setCategory(todoDTO.category());
-        todo.setLevel(todoDTO.level());
+        todo.setCategory(Enum.valueOf(Category.class, todoDTO.category()));
+        todo.setLevel(Enum.valueOf(Level.class, todoDTO.level()));
         todo.setDeadline(todoDTO.deadline());
         todo.setCompleted(todoDTO.completed());
 

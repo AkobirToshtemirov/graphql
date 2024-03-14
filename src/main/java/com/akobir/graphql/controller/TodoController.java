@@ -3,6 +3,7 @@ package com.akobir.graphql.controller;
 import com.akobir.graphql.dto.TodoDTO;
 import com.akobir.graphql.entity.Todo;
 import com.akobir.graphql.service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -24,7 +25,7 @@ public class TodoController {
     }
 
     @MutationMapping
-    public ResponseEntity<Todo> createTodo(@Argument("todo") TodoDTO todoInputDTO) {
+    public ResponseEntity<Todo> createTodo(@Argument("todo") @Valid TodoDTO todoInputDTO) {
         Todo createdTodo = todoService.createTodo(todoInputDTO);
         return ResponseEntity.ok(createdTodo);
     }
@@ -44,7 +45,7 @@ public class TodoController {
     @MutationMapping
     public ResponseEntity<Todo> updateTodo(
             @Argument("todoId") Long todoId,
-            @Argument("todo") TodoDTO todoInputDTO
+            @Argument("todo") @Valid TodoDTO todoInputDTO
     ) {
         Todo updatedTodo = todoService.updateTodo(todoId, todoInputDTO);
         return ResponseEntity.ok(updatedTodo);
